@@ -131,6 +131,10 @@ export interface FeatureConfigInterface {
      */
     emailProviders?: FeatureAccessConfigInterface;
     /**
+     * Feature flag playground feature.
+     */
+    featureFlagPlayground?: FeatureAccessConfigInterface;
+    /**
      * Flow orchestration feature.
      */
     flows?: FeatureAccessConfigInterface;

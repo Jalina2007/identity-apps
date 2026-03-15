@@ -223,6 +223,20 @@ export const getAppViewRoutes = (): RouteInterface[] => {
             showOnSidePanel: true
         },
         {
+            children: [
+                {
+                    component: lazy(() => import("../pages/feature-flag-playground")),
+                    exact: true,
+                    icon: {
+                        icon: getSidePanelIcons().childIcon
+                    },
+                    id: "featureFlagPlaygroundRoute",
+                    name: "Feature Flag Playground",
+                    path: AppConstants.getPaths().get("FEATURE_FLAG_PLAYGROUND"),
+                    protected: true,
+                    showOnSidePanel: true
+                }
+            ],
             component: lazy(() =>
                 import("@wso2is/admin.home.v1/pages/home-page")),
             exact: false,

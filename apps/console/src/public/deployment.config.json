@@ -524,11 +524,11 @@
                 "featureFlags": [
                     {
                         "feature": "applications",
-                        "flag": ""
+                        "flag": "TRUE"
                     },
                     {
                         "feature": "applications.templates",
-                        "flag": ""
+                        "flag": "TRUE"
                     },
                     {
                         "feature": "applications.edit.general.branding",
@@ -696,6 +696,27 @@
                     ]
                 }
             },
+            "featureFlagPlayground": {
+                "disabledFeatures": [],
+                "enabled": true,
+                "featureFlags": [
+                    {
+                        "feature": "featureFlagPlayground.buttonStatus",
+                        "flag": "BETA"
+                    },
+                    {
+                        "feature": "featureFlagPlayground.buttonBehavior",
+                        "flag": "TRUE"
+                    }
+                ],
+                "scopes": {
+                    "create": [],
+                    "delete": [],
+                    "feature": [],
+                    "read": [],
+                    "update": []
+                }
+            },
             "auditLogs": {
                 "disabledFeatures": [
                     "remote.log.publish"
@@ -811,7 +832,7 @@
                     "consoleSettings.invitedExternalAdmins",
                     "consoleSettings.privilegedUsers"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "featureFlags": [],
                 "scopes": {
                     "create": [
@@ -1786,7 +1807,7 @@
                 "featureFlags": [
                     {
                         "feature": "userRoles",
-                        "flag": ""
+                        "flag": "BETA"
                     }
                 ],
                 "scopes": {
@@ -2150,6 +2171,7 @@
                 "branding": "v0.0.0",
                 "consoleSettings": "v0.0.0",
                 "emailTemplates": "v0.0.0",
+                "featureFlagPlaygroundRoute": "v0.0.0",
                 "flows": "v1.0.0",
                 "gettingStarted": "v0.0.0",
                 "governanceConnectors": "v0.0.0",

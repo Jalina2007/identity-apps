@@ -361,6 +361,8 @@ const DashboardLayout: FunctionComponent<RouteComponentProps> = (
                             items: route.items?.map((subRoute: NavRouteInterface) => {
 
                                 const subRouteFlag: string = resolveFeatureFlag(subRoute.id, subRoute.featureFlagKey);
+                                console.log(subRouteFlag);
+                                console.log(t(subRouteFlag));
 
                                 return {
                                     "data-componentid": `side-panel-items-${ kebabCase(subRoute.id) }`,

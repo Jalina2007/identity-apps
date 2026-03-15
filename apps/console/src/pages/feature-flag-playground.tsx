@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-2026, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -20,19 +20,18 @@ import Button from "@oxygen-ui/react/Button";
 import Chip from "@oxygen-ui/react/Chip";
 import Stack from "@oxygen-ui/react/Stack";
 import Typography from "@oxygen-ui/react/Typography";
+import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
+import { history } from "@wso2is/admin.core.v1/helpers/history";
 import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import FeatureFlagLabel from "@wso2is/admin.feature-gate.v1/components/feature-flag-label";
 import useFeatureFlag from "@wso2is/admin.feature-gate.v1/hooks/use-feature-flag";
-import { FeatureFlagsInterface, IdentifiableComponentInterface } from "@wso2is/core/models";
+import { FeatureFlagsInterface, TestableComponentInterface } from "@wso2is/core/models";
 import { PageLayout } from "@wso2is/react-components";
 import React, { CSSProperties, FunctionComponent, ReactElement, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 
-/**
- * Proptypes for the overview page component.
- */
-type HomePageInterface = IdentifiableComponentInterface;
+type FeatureFlagPlaygroundPagePropsInterface = TestableComponentInterface;
 
 const FEATURE_FLAG_PLAYGROUND_LABEL_KEY: string = "featureFlagPlayground.buttonStatus";
 const FEATURE_FLAG_PLAYGROUND_BEHAVIOR_KEY: string = "featureFlagPlayground.buttonBehavior";
@@ -43,19 +42,9 @@ const NATIVE_BUTTON_WRAPPER_STYLE: CSSProperties = {
     gap: "8px"
 };
 
-/**
- * Overview page.
- *
- * @param props - Props injected to the component.
- *
- * @returns Getting started page.
- */
-const HomePage: FunctionComponent<HomePageInterface> = (
-    props: HomePageInterface
-): ReactElement => {
-    const {
-        ["data-componentid"]: componentId
-    } = props;
+const FeatureFlagPlaygroundPage: FunctionComponent<FeatureFlagPlaygroundPagePropsInterface> = ({
+    "data-testid": testId = "feature-flag-playground-page"
+}: FeatureFlagPlaygroundPagePropsInterface): ReactElement => {
 
     const [ clickCount, setClickCount ] = useState<number>(0);
 
@@ -84,9 +73,11 @@ const HomePage: FunctionComponent<HomePageInterface> = (
         <PageLayout
             title="Feature Flag Playground"
             description="A temporary page to quickly verify feature flag lookup and rendering."
-            pageTitle="Feature Flag Playground"
-            data-componentid={ `${componentId}-layout` }
-            className="getting-started-page"
+            backButton={ {
+                onClick: (): void => history.push(AppConstants.getPaths().get("GETTING_STARTED")),
+                text: "Back"
+            } }
+            data-testid={ testId }
         >
             <Stack spacing={ 3 }>
                 <Typography variant="body1">
@@ -143,11 +134,4 @@ const HomePage: FunctionComponent<HomePageInterface> = (
     );
 };
 
-/**
- * Default props for the component.
- */
-HomePage.defaultProps = {
-    "data-componentid": "getting-started-page"
-};
-
-export default HomePage;
+export default FeatureFlagPlaygroundPage;
